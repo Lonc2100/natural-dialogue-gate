@@ -1,0 +1,98 @@
+{
+  "schema_version": "2.0.0-qiaomu-lite",
+  "generated_at": "2026-10-22",
+  "package": {
+    "name": "natural-dialogue-gate",
+    "version": "0.1.1",
+    "owner": "local-user",
+    "maturity_tier": "scaffold",
+    "lifecycle_stage": "public-release-candidate",
+    "upstream_inspiration": null,
+    "upstream_sync": {}
+  },
+  "intent": {
+    "description": "中文影视台词的人话门禁。用户要求写、改、压缩或审查电影、短剧、电视剧、漫剧和视频中的人物台词，或反馈“台词太碎、短句太多、不像人话、AI味重、对话很怪、不要一句一顿、能一句说完别拆开”时使用。强制删除无剧情价值的寒暄和衔接台词，把同一口气内的意思合成自然完整的话，并用角色处境、关系、时代和说话目的检查每一句。不要用于普通说明文、广告文案或用户明确要求电报式短句的文本。\n",
+    "job_to_be_done": "Rewrite Chinese screen dialogue so each line is speakable, necessary, character-specific, and free of mechanical AI fragmentation.",
+    "target_users": [
+      "Qiaomu operator"
+    ],
+    "inputs": [],
+    "outputs": [],
+    "exclusions": [
+      "general prose editing",
+      "advertising copy",
+      "translation-only work",
+      "intentionally telegraphic character voices"
+    ],
+    "qiaomu_defaults": {}
+  },
+  "triggers": {
+    "should_trigger": [
+      "这段台词太碎了，改得像人话一点。",
+      "能一句说完的对白不要拆成两个短句，重写这一场。",
+      "审查这个短剧剧本，删掉没有剧情价值的台词。",
+      "人物对话 AI 味太重，而且一直答非所问，请压缩。",
+      "Polish this screenplay dialogue so it sounds natural and human."
+    ],
+    "should_not_trigger": [
+      "把这份普通说明文改得简短一点。",
+      "写三条广告文案。",
+      "把这段台词只翻译成英文，不要改。"
+    ],
+    "near_neighbor": [
+      "分析这场戏的镜头调度，不需要改对白。",
+      "这个人物就是故意用电报式短句说话，请保持。"
+    ]
+  },
+  "workflow": {
+    "router_rules": [],
+    "compact_workflow": [],
+    "gate_ladder": [],
+    "output_contract": []
+  },
+  "resources": {
+    "references": [
+      "references\\bad-patterns.md"
+    ],
+    "scripts": [],
+    "evals": [
+      "evals\\regression-cases.md",
+      "evals\\trigger_cases.json"
+    ],
+    "reports": [
+      "reports\\package-validation.json",
+      "reports\\skill-ir.json",
+      "reports\\trigger-eval.json"
+    ]
+  },
+  "portability": {
+    "canonical_format": "agent-skills",
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible"
+    ],
+    "activation": {
+      "mode": "manual-or-description-match"
+    },
+    "execution": {},
+    "trust": {
+      "source_tier": "local",
+      "remote_inline_execution": "forbid"
+    },
+    "permissions": {
+      "network": "none",
+      "file_write": "only when the user explicitly asks to update a script file",
+      "subprocess": "validation only"
+    },
+    "degradation": {}
+  },
+  "gates": {},
+  "evidence_boundary": {
+    "generated_reports_are_evidence": true,
+    "planned_work_is_evidence": false,
+    "missing_external_or_human_evidence_label": "missing evidence",
+    "public_claim_policy": "claim only what local validation, install proof, human review, or provider-backed evidence actually supports"
+  }
+}

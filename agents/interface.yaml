@@ -1,0 +1,25 @@
+interface:
+  display_name: "台词人话门禁"
+  short_description: "删除无效对白，合并机械碎句，让中文影视台词真正说得出口"
+  default_prompt: "使用 $natural-dialogue-gate 审查我提供的中文影视对白。先删除只负责衔接、解释动作、重复画面或凑问答的台词，再把同一人物同一口气里的意思合成自然完整的话。短句只有在惊讶、打断、拒绝、命令或明确关系落点时才能保留。交付前逐句做口腔测试；任何一句不像角色在当下会说的话都不得交付。除非我要求分析，只给可直接替换的完整版本。"
+  examples:
+    - "这段台词太碎了，改得像人话一点"
+    - "能一句说完的对白不要拆成两句"
+    - "删掉没有剧情和情绪价值的接话"
+    - "压短这一场，但不要改成机械短句"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+  activation:
+    mode: "manual-or-description-match"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+  permissions:
+    network: "none"
+    file_write: "only when the user explicitly asks to update a script file"
+    subprocess: "validation only"
