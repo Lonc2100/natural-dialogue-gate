@@ -1,0 +1,34 @@
+{
+  "name": "natural-dialogue-gate",
+  "version": "0.1.1",
+  "owner": "local-user",
+  "updated_at": "2026-10-22",
+  "status": "active",
+  "maturity_tier": "scaffold",
+  "lifecycle_stage": "public-release-candidate",
+  "context_budget_tier": "scaffold",
+  "target_platforms": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible"
+  ],
+  "intent": {
+    "job_to_be_done": "Rewrite Chinese screen dialogue so each line is speakable, necessary, character-specific, and free of mechanical AI fragmentation.",
+    "exclusions": [
+      "general prose editing",
+      "advertising copy",
+      "translation-only work",
+      "intentionally telegraphic character voices"
+    ]
+  },
+  "release_gates": [
+    "validate_skill",
+    "trigger_boundary_eval",
+    "manual_regression_cases"
+  ],
+  "permissions": {
+    "network": "none at runtime",
+    "publication": "not requested"
+  }
+}

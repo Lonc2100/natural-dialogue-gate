@@ -1,0 +1,162 @@
+{
+  "ok": true,
+  "threshold": 0.34,
+  "description_concepts": [
+    "dialogue",
+    "natural",
+    "rewrite",
+    "screen"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "这段台词太碎了，改得像人话一点。",
+        "family": "fragmented_dialogue",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "dialogue",
+          "natural",
+          "rewrite"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "能一句说完的对白不要拆成两个短句，重写这一场。",
+        "family": "merge_short_lines",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "dialogue",
+          "natural",
+          "rewrite"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "审查这个短剧剧本，删掉没有剧情价值的台词。",
+        "family": "screenplay_audit",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "dialogue",
+          "rewrite",
+          "screen"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "人物对话 AI 味太重，而且一直答非所问，请压缩。",
+        "family": "ai_dialogue",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "dialogue",
+          "rewrite",
+          "screen"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Polish this screenplay dialogue so it sounds natural and human.",
+        "family": "en_dialogue",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "dialogue",
+          "natural",
+          "rewrite",
+          "screen"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "把这份普通说明文改得简短一点。",
+        "family": "general_prose",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.25,
+        "matched_concepts": [
+          "rewrite"
+        ],
+        "negative_pattern": "普通说明文"
+      },
+      {
+        "prompt": "写三条广告文案。",
+        "family": "ad_copy",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.25,
+        "matched_concepts": [
+          "rewrite"
+        ],
+        "negative_pattern": "广告文案"
+      },
+      {
+        "prompt": "把这段台词只翻译成英文，不要改。",
+        "family": "translation_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "dialogue",
+          "rewrite"
+        ],
+        "negative_pattern": "只翻译"
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "分析这场戏的镜头调度，不需要改对白。",
+        "family": "directing_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "dialogue",
+          "rewrite",
+          "screen"
+        ],
+        "negative_pattern": "不需要改"
+      },
+      {
+        "prompt": "这个人物就是故意用电报式短句说话，请保持。",
+        "family": "intentional_terse_voice",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "natural",
+          "screen"
+        ],
+        "negative_pattern": "电报式"
+      }
+    ]
+  }
+}
